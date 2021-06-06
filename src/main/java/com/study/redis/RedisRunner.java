@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -27,5 +28,16 @@ public class RedisRunner implements ApplicationRunner {
         System.out.println(findId.get().getEmail());
         System.out.println(findId.get().getId());
         System.out.println(findId.get().getUserName());
+
+
+        List<Account> list = (List<Account>) accountRepository.findAll();
+        for(Account temp : list){
+            System.out.println("-----------------------");
+            System.out.println(temp.getId());
+            System.out.println(temp.getUserName());
+            System.out.println(temp.getEmail());
+            System.out.println("-----------------------");
+        }
+
     }
 }
